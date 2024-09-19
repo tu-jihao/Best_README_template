@@ -1,163 +1,59 @@
 
 
-# ProjectName
+# resymbol
 
-ProjectName and Description
+Update Gene Symbols Uniquely
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<!-- PROJECT LOGO -->
 <br />
 
 <p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  <h3 align="center">更新symbol后出现重名？</h3>
+  <h3 align="center">更新symbol时网络不稳定导致总失败？</h3>
+  <h3 align="center">Get duplicated symbols after update？</h3>
+  <h3 align="center">Bad newtwork always abort your updating ？</h3>
 
-  <h3 align="center">"完美的"README模板</h3>
+
+  
   <p align="center">
-    一个"完美的"README模板去快速开始你的项目！
+    resymbol只更新不会产生歧义或冲突的gene symbols。只使用下载后的本地基因名更新文件，运行不吃网速，更没有长串symbol更新时总掉线的烦恼！  
+    Only symbols without ambiguity will be updated. Using local files instead of checking online, faraway from abort and crawling.  
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/shaojintian/Best_README_template">查看Demo</a>
-    ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">报告Bug</a>
-    ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">提出新特性</a>
+
   </p>
 
 </p>
 
-
- 本篇README.md面向开发者
  
-## 目录
+### 所需文件下载/To download genefiles
 
-- [上手指南](#上手指南)
-  - [开发前的配置要求](#开发前的配置要求)
-  - [安装步骤](#安装步骤)
-- [文件目录说明](#文件目录说明)
-- [开发的架构](#开发的架构)
-- [部署](#部署)
-- [使用到的框架](#使用到的框架)
-- [贡献者](#贡献者)
-  - [如何参与开源项目](#如何参与开源项目)
-- [版本控制](#版本控制)
-- [作者](#作者)
-- [鸣谢](#鸣谢)
+https://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/archive/  
+### 注意该文件每月更新/This file updates monthly!!!
 
-### 上手指南
+### 示例/Example
 
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
+hgnc_complete_set <- read.delim("hgnc_complete_set.txt")  
+nameold = c("TP53","CD206")  
+nametotal = resymbol(hgnc_complete_set,nameold)
 
-
-
-###### 开发前的配置要求
-
-1. xxxxx x.x.x
-2. xxxxx x.x.x
-
-###### **安装步骤**
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-
-```sh
-git clone https://github.com/shaojintian/Best_README_template.git
-```
-
-### 文件目录说明
-eg:
-
-```
-filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
-
-```
+### 输出结果/output
+包含有新symbol列的数据框/A dataframe including replaced symbols:  
+old: 输入的symbols/symbols input.  
+newnames: 可选的更新后symbol（可能有歧义或与输入symbol冲突）/returned new symbols.   
+prev/aliaschange: 可选的根据别名/曾用名库更新后的symbol/newnames searched by previous/alias symbol list.   
+changenumber: 输入symbol匹配到的新symbol数/how many new symbols did the old symbol matched.   
+newname_to_use: 具有唯一性的symbol列/unique updated symbol list.  
 
 
+### 作者/Author
+Jihao
+
+### 鸣谢/Acknowledgments
 
 
+- [一只小蛮要](https://blog.csdn.net/weixin_43843918/article/details/129395318?spm=1001.2014.3001.5501)
+- [辣椒油li](https://blog.csdn.net/lijianyi0219/article/details/116297423)
+- [shaojintian](https://github.com/shaojintian/Best_README_template)
 
-### 开发的架构 
-
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
-
-### 部署
-
-暂无
-
-### 使用到的框架
-
-- [xxxxxxx](https://getbootstrap.com)
-- [xxxxxxx](https://jquery.com)
-- [xxxxxxx](https://laravel.com)
-
-### 贡献者
-
-请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
-
-#### 如何参与开源项目
-
-贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
-
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-### 版本控制
-
-该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
-
-### 作者
-
-xxx@xxxx
-
-知乎:xxxx  &ensp; qq:xxxxxx    
-
- *您也可以在贡献者名单中参看所有参与该项目的开发者。*
-
-### 版权说明
-
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
-
-### 鸣谢
-
-
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Img Shields](https://shields.io)
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Pages](https://pages.github.com)
-- [Animate.css](https://daneden.github.io/animate.css)
-- [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
 
 <!-- links -->
 [your-project-path]:shaojintian/Best_README_template
